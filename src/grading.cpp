@@ -87,3 +87,13 @@ bool isAtRisk(const ScoreGrid& scores, int studentIndex) {
 
     return false;
 }
+
+int countAtRisk(const ScoreGrid& scores) {
+    int count{0};
+    for (auto i{0}; i < STUDENT_COUNT; ++i) {
+        if (studentAverage(scores, i) < 70.0) {
+            ++count;
+        }
+    }
+    return count;
+}
