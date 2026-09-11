@@ -1,0 +1,104 @@
+FUNCTION:        countAtRisk
+MODULE:          grading
+RESPONSIBLE FOR: Determining how many students in the class are at risk
+
+    PRE: Individual scores populated with student information
+    POST: The scores are not modified
+    SIDE EFFECTS: None
+    RETURNS: Number of students at risk
+
+    PARAMETERS:
+        scores : const & — because of PRE
+
+    SIGNATURE:
+        int countAtRisk(const ScoreGrid& scores);
+
+    HARD TO TEST BECAUSE: having to make various 2d array grid test cases with edge cases like all students at risk or no students at risk.
+
+
+--------------------------------------------------------------------------------
+
+FUNCTION:        findClassExtremes
+MODULE:          grading
+RESPONSIBLE FOR: Finding the single lowest and highest score in the grid and their row indices
+
+    PRE: Grid is populated with student scores
+    POST: lowest, highest, lowestRow, and highestRow contain extreme values and their row indices
+    SIDE EFFECTS: Updates reference parameters
+    RETURNS: Nothing
+
+    PARAMETERS:
+        scores : const & — because of PRE
+        lowest : & — because of POST / SIDE EFFECTS
+        highest : & — because of POST / SIDE EFFECTS
+        lowestRow : & — because of POST / SIDE EFFECTS
+        highestRow : & — because of POST / SIDE EFFECTS
+
+    SIGNATURE:
+        void findClassExtremes(const ScoreGrid& scores, int& lowest, int& highest, int& lowestRow, int& highestRow);
+
+    HARD TO TEST BECAUSE: checking multiple output parameters at once and handling ties for highest and lowest scores.
+
+
+--------------------------------------------------------------------------------
+
+FUNCTION:        applyCurve
+MODULE:          grading
+RESPONSIBLE FOR: Adding points to every score in the grid capped at 100
+
+    PRE: Grid has scores and curve points is non-negative
+    POST: Scores in the grid are increased by points up to 100
+    SIDE EFFECTS: Modifies the original grid
+    RETURNS: Nothing
+
+    PARAMETERS:
+        scores : & — because of POST / SIDE EFFECTS
+        points : value — because of PRE
+
+    SIGNATURE:
+        void applyCurve(ScoreGrid& scores, int points);
+
+    HARD TO TEST BECAUSE: need to check every score in the 2d grid and make sure scores over 100 stop at 100.
+
+
+
+--------------------------------------------------------------------------------
+
+FUNCTION:        topStudent
+MODULE:          grading
+RESPONSIBLE FOR: Returning the row index of the student with the highest average
+
+    PRE: Grid contains valid student scores
+    POST: Grid is not modified
+    SIDE EFFECTS: None
+    RETURNS: Row index of top student
+
+    PARAMETERS:
+        scores : const & — because of PRE
+
+    SIGNATURE:
+        int topStudent(const ScoreGrid& scores);
+
+    HARD TO TEST BECAUSE: calculating averages across rows and dealing with tie breaks if two students have the exact same top average.
+
+
+
+--------------------------------------------------------------------------------
+
+FUNCTION:        printStudentRow
+MODULE:          printing
+RESPONSIBLE FOR: Printing a student row with an optional footnote at the end
+
+    PRE: studentRow contains score data
+    POST: Row and footnote are printed to console
+    SIDE EFFECTS: Prints output to screen
+    RETURNS: Nothing
+
+    PARAMETERS:
+        studentRow : const & — because of PRE
+        footnote : const & with default — because of PRE
+
+    SIGNATURE:
+        void printStudentRow(const StudentRow& studentRow, const std::string& footnote = "");
+
+    HARD TO TEST BECAUSE: output goes directly to console output instead of returning a value so you can't easily assert it in a unit test.
