@@ -13,3 +13,8 @@ target_include_directories(gradebook_lib PUBLIC include)
 
 add_executable(gradebook src/main.cpp)
 target_link_libraries(gradebook PRIVATE gradebook_lib)
+
+include(CTest)
+add_executable(run_tests tests/test_grading.cpp)
+target_link_libraries(run_tests PRIVATE gradebook_lib)
+add_test(NAME GradebookTests COMMAND run_tests)
