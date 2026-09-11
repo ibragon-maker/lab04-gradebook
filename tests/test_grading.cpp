@@ -36,7 +36,7 @@ TEST_CASE("CountAtRisk CountsBothFailingStudents", "[grading]") {
     
     
     for (auto& score : scores[0]) {
-        score = 50.0;
+        score =50.0;
     }
     for (auto& score : scores[1]) {
         score = 50.0;

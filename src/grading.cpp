@@ -75,7 +75,7 @@ bool hasPerfectScore(const ScoreGrid& scores, int studentIndex) {
 }
 
 bool isAtRisk(const ScoreGrid& scores, int studentIndex) {
-    if (studentAverage(scores, studentIndex) < 70.0) {
+    if (studentAverage(scores, studentIndex) < 60.0) {
         return true;
     }
 
